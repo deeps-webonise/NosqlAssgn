@@ -1,0 +1,40 @@
+Posts {
+  _id : ObjectId('AAAA'),
+  user_id : 12345,
+  text : 'My first post',
+   img: [{"img 1"},{"img 2"}]
+  comments : [
+    { text : 'nice post', user_id : 123231, date_time :"16-08-2016 7:20"},
+    { text : 'good post', user_id : 521223, date_time: "14-08-2016 3:40"},
+  ]
+} //Here post will have comments in an array.Because one post can have more than one comment
+
+Users
+{
+   _id : ObjectID('D14A'), 
+   name : 'ABC',
+   password : 'asd',
+   posts: [
+   ObjectID('AAAA')
+  ]
+}
+
+
+Usertypes
+{
+  type: "admin or superuser or user"
+  permission: "1 or 2 or 3"
+  user:[ objectId('D14A')]
+
+}
+
+
+Based on different users we will have different permissions assigned
+Different permission means different user can be accessed.
+
+
+
+
+
+
+
