@@ -1,0 +1,38 @@
+Posts {
+
+  user_id : username,
+  heading : "This is my first post",
+  content : "Content of post here"
+  images : [{url : "img 1"},{url: "img 2"}],
+  posted_on: date_time,
+  comments : [
+    
+{  	
+comment : 'nice post', 
+user_id : username,
+commented_on:"16-08-2016 7:20"
+reply:[{user_id : username , reply:" "}]
+},
+    
+{ 
+comment : 'good post', 
+user_id : username, 
+date_time: "14-08-2016 3:40"
+reply: [{user_id : username , reply:" "}]
+},
+//More Users wil be added.
+  
+  ]
+} //Here post will have comments in an array.Because one post can have more than one comment
+
+Users
+{
+    
+   username :username,
+   name : 'ABC',
+   email:"abc@gmail.com",
+   password : 'asd',
+   user_info:"info about user",
+   role : admin or super or editor
+   
+}
