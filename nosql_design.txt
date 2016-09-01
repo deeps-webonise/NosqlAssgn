@@ -1,40 +1,41 @@
 Posts {
-  _id : ObjectId('AAAA'),
-  user_id : 12345,
-  text : 'My first post',
-   img: [{"img 1"},{"img 2"}]
+
+  user_id : username,
+  heading : "This is my first post",
+  content : "Content of post here"
+  images : [{url : "img 1"},{url: "img 2"}],
+  posted_on: date_time,
   comments : [
-    { text : 'nice post', user_id : 123231, date_time :"16-08-2016 7:20"},
-    { text : 'good post', user_id : 521223, date_time: "14-08-2016 3:40"},
+    
+{  	
+comment : 'nice post', 
+user_id : username,
+commented_on:"16-08-2016 7:20"
+reply:[{user_id : username , reply:" "}]
+},
+    
+{ 
+comment : 'good post', 
+user_id : username, 
+date_time: "14-08-2016 3:40"
+reply: [{user_id : username , reply:" "}]
+},
+//More Users wil be added.
+  
   ]
 } //Here post will have comments in an array.Because one post can have more than one comment
 
 Users
 {
-   _id : ObjectID('D14A'), 
+    
+   username :username,
    name : 'ABC',
+   email:"abc@gmail.com",
    password : 'asd',
-   posts: [
-   ObjectID('AAAA')
-  ]
+   user_info:"info about user",
+   role : admin or super or editor
+   
 }
-
-
-Usertypes
-{
-  type: "admin or superuser or user"
-  permission: "1 or 2 or 3"
-  user:[ objectId('D14A')]
-
-}
-
-
-Based on different users we will have different permissions assigned
-Different permission means different user can be accessed.
-
-
-
-
 
 
 
