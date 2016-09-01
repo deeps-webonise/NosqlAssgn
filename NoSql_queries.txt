@@ -1,0 +1,68 @@
+Insert a document into users collection
+------------------------------------------
+db.users.insert({ 
+"username" : "deepn94", 
+"name" : "Deep", 
+"email" : "deepn94@gmail.com", 
+"password": "deep",
+"user_info": "Currently in webonise", 
+"role":"admin"})
+
+
+
+Insert a document into posts collection
+------------------------------------------
+db.posts.insert({
+"user_id":"amit384",
+"heading":"MyFirstPost",
+"content":"This is my first post",
+"images": [{"src" : "www.google.co.in"},{"src" : "www.gmail.com"}],
+"comments":[
+	{
+         "user_id":"deepn94",
+	 "comment" : "like it"
+	}
+
+]
+});
+
+
+Adding a new document to the collection
+----------------------------------------------
+db.posts.update(
+    { "user_id": "deepn94"}, 
+    {$push: {"comments": {"user_id": "amit384", "comment": "nice post"}}}
+)
+
+db.posts.update(
+    { "user_id": "deepn94"}, 
+    {$push: {"comments": {"user_id": "nikhil", "comment": "good post"}}}
+)
+
+
+
+Update the comment of a particular user
+-------------------------------------------------------
+db.posts.update({"comments.user_id" : "nik"}, {"$set" : {"comments.$.comment" : "excellent post"}})
+
+
+
+Add Object Id to a comment
+---------------------------------------------
+db.posts.update({"user_id":"deepn94", "comments.user_id":"nikhil"}, {"$set" : {"comments.$.comment_id":ObjectId()}})
+
+db.posts.update({"user_id":"deepn94", "comments.user_id":"amit384"}, {"$set" : {"comments.$.comment_id":ObjectId()}})
+
+
+Delete a comment in an array using comment_id
+------------------------------------------------
+db.posts.update( {"user_id":"deepn94","comments.comment_id" : ObjectId("57c832fbfb9046476d21da9e")},{ $pull: { "comments": {"comment" : "good post"}}})
+
+Count of all comments in all posts
+------------------------------------------------
+db.posts.aggregate({$project:{ count:{$size:"$comments"}}})
+
+
+Count of all comments in one post
+------------------------------------ 
+db.posts.aggregate({ $group: { _id: "57c83e93fb9046476d21da9f", count: { $sum: 1 }}});
