@@ -66,29 +66,3 @@ db.posts.aggregate({$project:{ count:{$size:"$comments"}}})
 Count of all comments in one post
 ------------------------------------ 
 db.posts.aggregate({ $group: { _id: "57c83e93fb9046476d21da9f", count: { $sum: 1 }}});
-
-
-	
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
